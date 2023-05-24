@@ -57,19 +57,36 @@ function frame() {
 
 frame();
 
-setInterval(() => {
-    const head_size = Math.floor(Math.random() * 30) + 30;
+let do_water = false;
+function enableCursorWater() {
+    do_water = !do_water;
+    updateBalls();
+}
 
-    const head_img = document.createElement("img");
-    head_img.src = `images/emoji (${Math.floor(Math.random() * 40) + 1}).webp`;
+let balls_plop_delay = 50;
+var updateBalls = () => {
+    if (do_water) {
+        const head_size = Math.floor(Math.random() * 30) + 30;
 
-    head_img.style.position = "absolute";
-    head_img.style.pointerEvents = "none";
+        const head_img = document.createElement("img");
+        head_img.src = `images/emoji (${Math.floor(Math.random() * 40) + 1}).webp`;
 
-    head_img.style.width = `${head_size}px`;
+        head_img.style.position = "fixed";
+        head_img.style.pointerEvents = "none";
 
-    const head = new Head(mouse_x - head_size / 2, mouse_y - head_size / 2, head_img, head_size);
-    heads.push(head);
+        head_img.style.width = `${head_size}px`;
 
-    document.body.appendChild(head_img);
-}, 50);
+        const head = new Head(mouse_x - head_size / 2, mouse_y - head_size / 2, head_img, head_size);
+        heads.push(head);
+
+        document.body.appendChild(head_img);
+    }
+};
+const WHEEL_AFFECT_BALLS_PLOP = 10;
+window.onwheel = (e) => {
+    if (e.deltaY < 0) {
+        balls_plop_delay += WHEEL_AFFECT_BALLS_PLOP;
+    } else {
+        balls_plop_delay = (((balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP) < 0) ? 0 : balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP);
+    }
+}
