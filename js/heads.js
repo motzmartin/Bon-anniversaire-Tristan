@@ -66,10 +66,10 @@ function enableCursorWater() {
 let balls_plop_delay = 50;
 var updateBalls = () => {
     if (do_water) {
-        const head_size = Math.floor(Math.random() * 30) + 30;
+        const head_size = Math.floor(Math.random() * 30) + 60;
 
         const head_img = document.createElement("img");
-        head_img.src = `images/emoji (${Math.floor(Math.random() * 40) + 1}).webp`;
+        head_img.src = `images/heads/emoji (${Math.floor(Math.random() * 40) + 1}).webp`;
 
         head_img.style.position = "fixed";
         head_img.style.pointerEvents = "none";

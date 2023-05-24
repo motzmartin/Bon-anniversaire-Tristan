@@ -94,3 +94,10 @@ function newPhrase() {
     document.querySelector("#word_1").textContent = words[Math.floor(Math.random() * words.length)];
     document.querySelector("#word_2").textContent = words[Math.floor(Math.random() * words.length)];
 }
+
+function updateBackground() {
+    document.body.style.backgroundImage = `url("images/backgrounds/background (${Math.floor(Math.random() * 11) + 1}).jpg")`;
+}
+
+setInterval(updateBackground, 2000);
+updateBackground();
