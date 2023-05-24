@@ -58,7 +58,8 @@ function frame() {
 
 frame();
 
-setInterval(() => {
+let balls_plop_delay = 50;
+var updateBalls = () => {
     const ball_size = Math.floor(Math.random() * 50) + 10;
 
     const ball_div = document.createElement("div");
@@ -74,4 +75,15 @@ setInterval(() => {
     balls.push(ball);
 
     document.body.appendChild(ball_div);
-}, 50);
+    setTimeout(updateBalls, balls_plop_delay);
+};
+updateBalls();
+const WHEEL_AFFECT_BALLS_PLOP = 10;
+window.onwheel = (e) => {
+    if (e.deltaY < 0) {
+        balls_plop_delay += WHEEL_AFFECT_BALLS_PLOP;
+    } else {
+        balls_plop_delay = (((balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP) < 0) ? 0 : balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP);
+    }
+    console.log(balls_plop_delay)
+}
