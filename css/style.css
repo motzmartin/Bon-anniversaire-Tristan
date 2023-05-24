@@ -56,3 +56,7 @@ body {
 .right {
 	float: right;
 }
+
+canvas {
+	pointer-events: none;
+}

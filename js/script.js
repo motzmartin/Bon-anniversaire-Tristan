@@ -28,8 +28,7 @@ class Trunk {
 
         if (last) {
             this.htmlElement.onclick = () => {
-                console.log(1)
-                // Faire quelque-chose !!!!!!!!!!!!!!!!!!!!!!!
+                window.location.href = "res/sites/WTF/index.html";
             }
         }
 
