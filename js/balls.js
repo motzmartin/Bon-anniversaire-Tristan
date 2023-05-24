@@ -71,7 +71,7 @@ var updateBalls = () => {
 
         const ball_div = document.createElement("div");
 
-        ball_div.style.position = "absolute";
+        ball_div.style.position = "fixed";
         ball_div.style.pointerEvents = "none";
         ball_div.style.borderRadius = "50%";
 

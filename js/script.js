@@ -28,6 +28,7 @@ class Trunk {
 
         if (last) {
             this.htmlElement.onclick = () => {
+                console.log(1)
                 // Faire quelque-chose !!!!!!!!!!!!!!!!!!!!!!!
             }
         }
@@ -44,11 +45,14 @@ function treesFall() {
 // Pride cloud cross
 const CLOUD_WIDTH = 100;
 const CLOUD_CROSS_SPEED = 10;
+const CLOUD_CROSS_ROTATION_SPEED = 10;
 class Pride_Cloud {
     constructor() {
         this.x = window.innerWidth + CLOUD_WIDTH;
+        this.angle = 0;
         this.createElement();
         this.startAnimation();
+        this.rotate = false;
     }
     startAnimation() {
         this.interval = setInterval(() => {
@@ -58,6 +62,12 @@ class Pride_Cloud {
             if (this.x < -CLOUD_WIDTH) {
                 this.htmlElement.remove();
                 clearInterval(this.interval);
+            }
+
+            if (this.rotate == true) {
+                this.angle += CLOUD_CROSS_ROTATION_SPEED;
+                this.angle = this.angle <= 360 ? this.angle : this.angle - 360;
+                this.htmlElement.style.rotate = this.angle + "deg";
             }
         }, 1000 / 60);
     }
@@ -69,6 +79,10 @@ class Pride_Cloud {
         this.htmlElement.style.top = "50%";
         this.htmlElement.style.transform = "translate(-50%, -50%)";
         document.body.append(this.htmlElement);
+
+        this.htmlElement.onclick = () => {
+            this.rotate = true;
+        }
     }
 }
 function prideCloudCross() {
