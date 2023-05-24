@@ -13,6 +13,11 @@ body {
     cursor: pointer;
 }
 
+#date_display {
+    background-color: white;
+}
+
 * {
+    user-select: none;
     overflow: hidden;
 }

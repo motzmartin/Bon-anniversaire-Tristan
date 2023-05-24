@@ -45,6 +45,8 @@ class Head {
 let doRotation = false;
 let angle = 0;
 let angleAdd = 1;
+let time = 0;
+const maxTime = 1000;
 function frame() {
     for (let i = heads.length - 1; i >= 0; i--) {
         heads[i].update();
@@ -65,6 +67,12 @@ function frame() {
             angleAdd = -1;
         } else if (angle < -10) {
             angleAdd = 1;
+        }
+        time += 1;
+        if (time >= maxTime) {
+            time = 0;
+            doRotation = false;
+            document.body.style.setProperty("-webkit-transform", "rotate(" + 0 + "deg)", null);
         }
     }
 
