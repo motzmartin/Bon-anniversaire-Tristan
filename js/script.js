@@ -90,8 +90,8 @@ function prideCloudCross() {
 // words change
 function newPhrase() {
     document.querySelector("#word_3").textContent = names[Math.floor(Math.random() * names.length)];
-    document.querySelector("#word_1").textContent = words[Math.floor(Math.random() * words.length)];
-    document.querySelector("#word_2").textContent = words[Math.floor(Math.random() * words.length)];
+    // document.querySelector("#word_1").textContent = words[Math.floor(Math.random() * words.length)];
+    // document.querySelector("#word_2").textContent = words[Math.floor(Math.random() * words.length)];
 }
 
 function updateBackground() {
