@@ -58,26 +58,33 @@ function frame() {
 
 frame();
 
+let do_water = false;
+function enableCursorWater() {
+    do_water = !do_water;
+    updateBalls();
+}
+
 let balls_plop_delay = 50;
 var updateBalls = () => {
-    const ball_size = Math.floor(Math.random() * 50) + 10;
+    if (do_water) {
+        const ball_size = Math.floor(Math.random() * 50) + 10;
 
-    const ball_div = document.createElement("div");
+        const ball_div = document.createElement("div");
 
-    ball_div.style.position = "absolute";
-    ball_div.style.pointerEvents = "none";
-    ball_div.style.borderRadius = "50%";
+        ball_div.style.position = "absolute";
+        ball_div.style.pointerEvents = "none";
+        ball_div.style.borderRadius = "50%";
 
-    ball_div.style.width = ball_div.style.height = `${ball_size}px`;
-    ball_div.style.backgroundColor = `#${balls_color[Math.floor(Math.random() * balls_color.length)]}`;
+        ball_div.style.width = ball_div.style.height = `${ball_size}px`;
+        ball_div.style.backgroundColor = `#${balls_color[Math.floor(Math.random() * balls_color.length)]}`;
 
-    const ball = new Ball(mouse_x - ball_size / 2, mouse_y - ball_size / 2, ball_div, ball_size);
-    balls.push(ball);
+        const ball = new Ball(mouse_x - ball_size / 2, mouse_y - ball_size / 2, ball_div, ball_size);
+        balls.push(ball);
 
-    document.body.appendChild(ball_div);
-    setTimeout(updateBalls, balls_plop_delay);
+        document.body.appendChild(ball_div);
+        setTimeout(updateBalls, balls_plop_delay);
+    }
 };
-updateBalls();
 const WHEEL_AFFECT_BALLS_PLOP = 10;
 window.onwheel = (e) => {
     if (e.deltaY < 0) {

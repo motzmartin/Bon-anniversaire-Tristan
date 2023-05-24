@@ -2,9 +2,9 @@
 const TREE_HEIGHT = 100;
 const TREE_FALL_SPEED = 10;
 class Trunk {
-    constructor(y) {
+    constructor(y, last) {
         this.y = y;
-        this.createHtmlElement();
+        this.createHtmlElement(last);
         this.startAnimation();
     }
     startAnimation() {
@@ -18,20 +18,27 @@ class Trunk {
             }
         }, 1000 / 60);
     }
-    createHtmlElement() {
+    createHtmlElement(last) {
         this.htmlElement = document.createElement("img");
         this.htmlElement.src = "res/img/trunk.png";
         this.htmlElement.style.position = "fixed";
         this.htmlElement.style.left = "50%";
         this.htmlElement.style.top = this.y + "px";
         this.htmlElement.style.transform = "translate(-50%, -50%)";
+
+        if (last) {
+            this.htmlElement.onclick = () => {
+                // Faire quelque-chose !!!!!!!!!!!!!!!!!!!!!!!
+            }
+        }
+
         document.body.append(this.htmlElement);
     }
 }
 const NUMBER_OF_TREE_FALL = 5;
 function treesFall() {
     for (let i = 0; i < NUMBER_OF_TREE_FALL; i++) {
-        new Trunk(- i * 2 * TREE_HEIGHT);
+        new Trunk(- i * 2 * TREE_HEIGHT, i == NUMBER_OF_TREE_FALL - 1);
     }
 }
 // Pride cloud cross
