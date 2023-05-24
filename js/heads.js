@@ -80,6 +80,8 @@ var updateBalls = () => {
         heads.push(head);
 
         document.body.appendChild(head_img);
+
+        setTimeout(updateBalls, balls_plop_delay);
     }
 };
 const WHEEL_AFFECT_BALLS_PLOP = 10;
