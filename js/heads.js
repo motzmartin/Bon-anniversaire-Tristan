@@ -52,6 +52,8 @@ function frame() {
         }
     }
 
+    document.querySelector("#date_display").textContent = Date();
+
     requestAnimationFrame(frame);
 }
 
@@ -82,6 +84,7 @@ var updateBalls = () => {
         document.body.appendChild(head_img);
     }
 };
+
 const WHEEL_AFFECT_BALLS_PLOP = 10;
 window.onwheel = (e) => {
     if (e.deltaY < 0) {
