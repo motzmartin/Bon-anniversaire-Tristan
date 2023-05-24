@@ -12,3 +12,7 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+* {
+    overflow: hidden;
+}

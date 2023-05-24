@@ -42,6 +42,9 @@ class Head {
     }
 }
 
+let doRotation = false;
+let angle = 0;
+let angleAdd = 1;
 function frame() {
     for (let i = heads.length - 1; i >= 0; i--) {
         heads[i].update();
@@ -49,6 +52,19 @@ function frame() {
         if (heads[i].isFinished()) {
             heads[i].html_element.remove();
             heads.splice(i, 1);
+        }
+    }
+
+    // Update date
+    document.querySelector("#date_display").textContent = Date();
+    if (doRotation) {
+        // Update rotation
+        document.body.style.setProperty("-webkit-transform", "rotate(" + angle + "deg)", null);
+        angle += angleAdd;
+        if (angle > 10) {
+            angleAdd = -1;
+        } else if (angle < -10) {
+            angleAdd = 1;
         }
     }
 
@@ -84,6 +100,7 @@ var updateBalls = () => {
         setTimeout(updateBalls, balls_plop_delay);
     }
 };
+
 const WHEEL_AFFECT_BALLS_PLOP = 10;
 window.onwheel = (e) => {
     if (e.deltaY < 0) {
