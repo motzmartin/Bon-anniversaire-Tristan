@@ -1,3 +1,33 @@
+function couteauSuisse() {
+    document.body.animate(
+        [
+            // keyframes
+            { transform: "scale(1)" },
+            { transform: "scale(0) rotate(90deg)" },
+            { transform: "scale(1)" }
+        ],
+        {
+            // timing options
+            duration: 1000
+        }
+    );
+}
+
+function brawhlhalla() {
+    document.body.animate(
+        [
+            // keyframes
+            { border: "0px solid black" },
+            { border: "500px solid black" },
+            { border: "0px solid black" }
+        ],
+        {
+            // timing options
+            duration: 2000
+        }
+    );
+}
+
 // Valheim trunks
 const TREE_HEIGHT = 100;
 const TREE_FALL_SPEED = 10;
