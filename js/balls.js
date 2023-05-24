@@ -62,10 +62,12 @@ setInterval(() => {
     const ball_size = Math.floor(Math.random() * 50) + 10;
 
     const ball_div = document.createElement("div");
+
     ball_div.style.position = "absolute";
-    ball_div.style.width = ball_div.style.height = `${ball_size}px`;
-    ball_div.style.backgroundColor = "red";
+    ball_div.style.pointerEvents = "none";
     ball_div.style.borderRadius = "50%";
+
+    ball_div.style.width = ball_div.style.height = `${ball_size}px`;
     ball_div.style.backgroundColor = `#${balls_color[Math.floor(Math.random() * balls_color.length)]}`;
 
     const ball = new Ball(mouse_x - ball_size / 2, mouse_y - ball_size / 2, ball_div, ball_size);
