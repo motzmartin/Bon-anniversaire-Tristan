@@ -101,3 +101,11 @@ function updateBackground() {
 
 setInterval(updateBackground, 2000);
 updateBackground();
+
+pianoLeft.onmousedown = () => {
+	clickSound.play();
+}
+
+pianoRight.onmousedown = () => {
+	boumSound.play();
+}

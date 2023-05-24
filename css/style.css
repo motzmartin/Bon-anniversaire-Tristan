@@ -21,3 +21,38 @@ body {
     user-select: none;
     overflow: hidden;
 }
+
+.container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width:  105px;
+	height: 200px;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.pianoKey {
+	width: 50px;
+	height: 100%;
+	background-color: black;
+	border-bottom: 10px #3B608A solid;
+	box-sizing: border-box;
+}
+
+.pianoKey:active {
+	border-bottom: 10px black solid;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
