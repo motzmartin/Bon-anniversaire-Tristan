@@ -1,31 +1,27 @@
 let mouse_x = 0;
 let mouse_y = 0;
 
-const balls = [];
-
-const balls_color = [
-    "C0392B", "E74C3C", "9B59B6", "8E44AD",
-    "2980B9", "3498DB", "1ABC9C", "16A085",
-    "27AE60", "2ECC71", "F1C40F", "F39C12",
-    "E67E22", "D35400"
-];
+const heads = [];
 
 document.onmousemove = (e) => {
     mouse_x = e.clientX;
     mouse_y = e.clientY;
 };
 
-class Ball {
-    constructor(x, y, ball_div, size) {
+class Head {
+    constructor(x, y, head_img, size) {
         this.acceleration_x = Math.random() - 0.5;
         this.acceleration_y = -2;
+
+        this.acceleration_deg = Math.random() - 0.5;
+        this.deg = 0;
 
         this.x = x;
         this.y = y;
 
         this.size = size;
 
-        this.html_element = ball_div;
+        this.html_element = head_img;
     }
 
     update() {
@@ -34,22 +30,25 @@ class Ball {
         this.x += this.acceleration_x;
         this.y += this.acceleration_y;
 
+        this.deg += this.acceleration_deg;
+
+        this.html_element.style.transform = `rotate(${this.deg}deg)`;
         this.html_element.style.left = `${this.x}px`;
         this.html_element.style.top = `${this.y}px`;
     }
 
     isFinished() {
-        return this.y >= window.innerHeight - this.size;
+        return this.y >= window.innerHeight;
     }
 }
 
 function frame() {
-    for (let i = balls.length - 1; i >= 0; i--) {
-        balls[i].update();
+    for (let i = heads.length - 1; i >= 0; i--) {
+        heads[i].update();
 
-        if (balls[i].isFinished()) {
-            balls[i].html_element.remove();
-            balls.splice(i, 1);
+        if (heads[i].isFinished()) {
+            heads[i].html_element.remove();
+            heads.splice(i, 1);
         }
     }
 
@@ -67,22 +66,20 @@ function enableCursorWater() {
 let balls_plop_delay = 50;
 var updateBalls = () => {
     if (do_water) {
-        const ball_size = Math.floor(Math.random() * 50) + 10;
+        const head_size = Math.floor(Math.random() * 30) + 30;
 
-        const ball_div = document.createElement("div");
+        const head_img = document.createElement("img");
+        head_img.src = `images/emoji (${Math.floor(Math.random() * 40) + 1}).webp`;
 
-        ball_div.style.position = "fixed";
-        ball_div.style.pointerEvents = "none";
-        ball_div.style.borderRadius = "50%";
+        head_img.style.position = "fixed";
+        head_img.style.pointerEvents = "none";
 
-        ball_div.style.width = ball_div.style.height = `${ball_size}px`;
-        ball_div.style.backgroundColor = `#${balls_color[Math.floor(Math.random() * balls_color.length)]}`;
+        head_img.style.width = `${head_size}px`;
 
-        const ball = new Ball(mouse_x - ball_size / 2, mouse_y - ball_size / 2, ball_div, ball_size);
-        balls.push(ball);
+        const head = new Head(mouse_x - head_size / 2, mouse_y - head_size / 2, head_img, head_size);
+        heads.push(head);
 
-        document.body.appendChild(ball_div);
-        setTimeout(updateBalls, balls_plop_delay);
+        document.body.appendChild(head_img);
     }
 };
 const WHEEL_AFFECT_BALLS_PLOP = 10;
