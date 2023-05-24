@@ -1,7 +1,3 @@
-body {
-    overflow: hidden;
-}
-
 .hidden {
     visibility: hidden;
     position: absolute;
