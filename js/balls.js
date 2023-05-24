@@ -85,5 +85,4 @@ window.onwheel = (e) => {
     } else {
         balls_plop_delay = (((balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP) < 0) ? 0 : balls_plop_delay - WHEEL_AFFECT_BALLS_PLOP);
     }
-    console.log(balls_plop_delay)
 }
