@@ -67,9 +67,9 @@ class Pride_Cloud {
 function prideCloudCross() {
     new Pride_Cloud();
 }
-// Names change
-let name_index = 0;
-setInterval(() => {
-    document.querySelector("#name_display").textContent = names[name_index];
-    name_index = name_index >= names.length ? 0 : name_index + 1;
-}, 500)
+// words change
+function newPhrase() {
+    document.querySelector("#word_3").textContent = names[Math.floor(Math.random() * names.length)];
+    document.querySelector("#word_1").textContent = words[Math.floor(Math.random() * words.length)];
+    document.querySelector("#word_2").textContent = words[Math.floor(Math.random() * words.length)];
+}
